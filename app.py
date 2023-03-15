@@ -37,7 +37,7 @@ STUDENT ROUTES
 # for student it will automatically load their details
 @app.route('/student-dashboard')
 def progress():
-    return render_template('student-dashboard.html')
+    return render_template('admin-dashboard.html')
 
 # to see the progress of a sub topic
 @app.route('/student-topic-progress')
@@ -62,10 +62,21 @@ def createTest():
 ADMIN ROUTES
 '''
 
-  
+# to see the progress of a sub topic
+@app.route('/admin-add-test')
+def adminAddTest():
+    return render_template('admin-add-test.html')
+
+# to see the progress of a sub topic
+@app.route('/admin-manage-ap')
+def adminManageAP():
+    return render_template('admin-manage-ap.html')
 
 
-
+# to see the progress of a sub topic
+@app.route('/admin-manage-students')
+def adminManageStudents():
+    return render_template('admin-manage-students.html')
 
   
 if __name__ == "__main__":

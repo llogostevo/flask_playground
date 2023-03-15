@@ -20,9 +20,28 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item "><a href="{{ url_for('landingPage') }}" class="nav-link px-4 {% block homeLink %}{% endblock %}">Home</a></li>
           <li class="nav-item "><a href="{{ url_for('createTest') }}" class="nav-link px-4 {% block createTestLink %}{% endblock %}">Create Test</a></li>
-          <li class="nav-item "><a href="{{ url_for('progress') }}" class="nav-link px-4 {% block overallProgressLink %}{% endblock %}">Overall Progress</a></li>
           <li class="nav-item "><a href="{{ url_for('topicProgress') }}" class="nav-link px-4 {% block topicProgressLink %}{% endblock %}">Topic Progress</a></li>
           <li class="nav-item "><a href="{{ url_for('subTopicProgress') }}" class="nav-link px-4 {% block subTopicProgressLink %}{% endblock %}">SubTopic Progress</a></li>
+       
+    <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle px-4 {% block adminLink %}{% endblock %}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin Dashboards
+          </a>
+          <ul class="dropdown-menu ">
+            <li><a class="dropdown-item" href="#">Overall Dashboard</a></li>
+            <li><a class="dropdown-item" href="#">Topic Dashboard</a></li>
+            <li><a class="dropdown-item" href="#">Sub-Topic Dashboard</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('createTest') }}">Create Test for Student</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('landingPage') }}" class="nav-link px-4">Individual Student Dashboard</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('topicProgress') }}" class="nav-link px-4">Individual Topic Progress</a></li>
+          <li><a class="dropdown-item" href="{{ url_for('subTopicProgress') }}" class="nav-link px-4">Individual SubTopic Progress</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('adminManageAP') }}">Create / Edit Assessment Point</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url_for('adminManageStudents') }}">Create / Edit Students</a></li>
+          </ul>
+        </li>
       </ul>
       <div class="mx-4">
           <button type="button" class="btn btn-outline-warning me-2"><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></button>

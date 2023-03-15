@@ -1,0 +1,118 @@
+<!-- HEADER TEMPLATE -->
+{% extends 'templateBase.html' %}
+
+{% block header %}
+  {% block title %} Admin {% endblock %}
+{% endblock %}
+
+{% block pageTitle %} Manage Student Users {% endblock %}
+{% block adminLink %} active text-warning" aria-current="page {% endblock %}
+
+{% block content %}
+
+<button class="px-3 mb-5 btn btn-warning text-dark btn-outline-light" type="button" data-bs-toggle="modal" data-bs-target="#editStudent">Add Student</button>
+
+<div class="row">
+      <div class="col table-responsive">
+        <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th class="text-center" scope="col">Email</th>
+            <th class="text-center" scope="col">Edit Details</th>
+            <th class="text-center" scope="col">Change Password</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in range(50) %}
+          <tr>
+            <td>Tommy</th>
+            <td>Jones</td>
+            <td class="text-center" >tommy@jones.com</td>
+            <td class="text-center">
+                <div><img  role="button" data-bs-toggle="modal" data-bs-target="#editStudent" src="{{url_for('static', filename='img/edit.svg')}}" class="rounded" alt="edit">
+              </div></td>
+            <td class="text-center" ><button class="px-3 btn btn-warning text-dark btn-outline-light" type="button" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</button></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+
+  <!-- ############# MODAL: Edit Student Details ################### -->
+  <div class="modal fade" id="editStudent" tabindex="-1" aria-labelledby="editStudentLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="editStudentLabel">Add / Edit Student</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!--             MODAL FORM  -->
+          <p>This form will add / edit student details</p>
+          <p class="text-danger">NB. password will remain the same, if creating a new user it will be the standard password - use the change password button on the main page to edit the students password</p>
+          <form>
+          <div class="mb-3">
+            <label for="form-student-first-name" class="col-form-label">First Name</label>
+            <input type="text" class="form-control" id="form-student-first-name">
+          </div> 
+
+            <div class="mb-3">
+            <label for="form-student-last-name" class="col-form-label">Last Name</label>
+            <input type="text" class="form-control" id="form-student-last-name">
+          </div> 
+
+            <div class="mb-3">
+            <label for="form-student-email" class="col-form-label">Email</label>
+            <input type="email" class="form-control" id="form-student-email">
+          </div> 
+        </form>  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn btn-warning text-dark btn-outline-light">Save changes</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>      
+<!-- ############# -->
+
+
+  <!-- ############# MODAL: Edit Student Details ################### -->
+  <div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="editStudentLabel">Change Password for Tommy Jones</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!--             MODAL FORM  -->
+          <p class="text-danger">This will change the students password</p>
+          <form>
+          <div class="mb-3">
+            <label for="form-student-password" class="col-form-label">New Password</label>
+            <input type="password" class="form-control" id="form-student-password">
+          </div> 
+            <div class="mb-3">
+            <label for="form-student-password-verify" class="col-form-label">Verify Password</label>
+            <input type="password" class="form-control" id="form-student-password-verify">
+          </div> 
+        </form>  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn btn-warning text-dark btn-outline-light">Save</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>      
+<!-- ############# -->
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

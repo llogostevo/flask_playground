@@ -1,0 +1,379 @@
+<!-- HEADER TEMPLATE -->
+{% extends 'templateBase.html' %}
+
+{% block header %}
+  {% block title %} Admin {% endblock %}
+{% endblock %}
+
+{% block pageTitle %} Assessment Point {% endblock %}
+{% block adminLink %} active text-warning" aria-current="page {% endblock %}
+
+{% block content %}
+<!--     CONTENT ROWS -->
+    <div class="row">
+      <div class="col table-responsive">
+        <table class="table table-dark">
+<!--           <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <td scope="col">First</td>
+            </tr>
+          </thead> -->
+          <tbody>
+            <tr>
+              <th scope="col">Test Date</th>
+              <td scope="col">13/03/2023</td>
+            </tr>
+            <tr>
+              <th scope="col">Test Type</th>
+              <td scope="col">Assessment Point</td>
+            </tr>
+            <tr>
+              <th scope="col">Test Name</th>
+              <td  scope="col">Assessment Point 2 - Paper 2: 13/03/2023</td>
+            </tr>
+            <tr>
+              <th rowspan="7" scope="col">Grade Boundaries</th>
+              <td scope="col" class="text-start">A* - 80&percnt;</td>
+            </tr>
+            <tr>
+              <td scope="col" class="text-start">A - 70&percnt;</td>
+            </tr>
+            <tr>
+              <td scope="col" class="text-start">B - 60&percnt;</td>
+            </tr>
+            <tr>
+              <td scope="col" class="text-start">C - 50&percnt;</td>
+            </tr>
+            <tr>
+              <td scope="col" class="text-start">D - 40&percnt;</td>
+            </tr>
+            <tr>
+              <td scope="col" class="text-start">E - 30&percnt;</td>
+            </tr>
+            <tr>
+              <td scope="col" class="text-start">F - 20&percnt;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+      <div class="row justify-content-start">
+        <div class="col-sm-12 col-md-3 my-2 ">
+          <button class="btn btn btn-warning text-dark btn-outline-light" data-bs-toggle="modal" data-bs-target="#addTest">Edit Test Details</button>
+        </div>
+        <div class="col-sm-12 col-md-3 my-2">
+          <button class="btn btn btn-warning text-dark btn-outline-light" data-bs-toggle="modal" data-bs-target="#questionUpdate">Add Question</button>
+        </div>
+<!--         can only be used when a question is added to a test -->
+        <div class="col-sm-12 col-md-3 my-2">
+          <button class="btn btn btn-warning text-dark btn-outline-light" data-bs-toggle="modal" data-bs-target="#addStudent">Add Students</button>
+        </div>
+      </div>
+
+<div class="row">
+      <div class="col">
+        <table class="table">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col">Question</th>
+            <th scope="col">Topic</th>
+            <th class="text-center" scope="col">Marks</th>
+            <th class="text-center" scope="col">Edit Question</th>
+            <th class="text-center" scope="col">Olive Yew</th>
+            <th class="text-center" scope="col">Aida Bugg</th>
+            <th class="text-center" scope="col">Maureen Biologist</th>
+            <th class="text-center" scope="col">Teri Dactyl</th>
+            <th class="text-center" scope="col">Peg Legge</th>
+            <th class="text-center" scope="col">Allie Grater</th>
+            <th class="text-center" scope="col">Liz Erd</th>
+            <th class="text-center" scope="col">Roy L. Commishun</th>
+            <th class="text-center" scope="col">Gene Eva Convenshun</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for i in range(0, 50)%}
+          <tr>
+            <th class="text-center" scope="row">{{i+1}}a {{(i%4)+1}}</th>
+            <td>1.2.1 Systems Software  - (a)	</td>
+            <td class="text-center" >4</td>
+            <td class="text-center"><div>
+                <img  role="button" data-bs-toggle="modal" data-bs-target="#questionUpdate" src="{{url_for('static', filename='img/edit.svg')}}" class="rounded" alt="edit">
+              </div></td>
+            <td class="text-center table-warning" >2</td>
+            <td class="text-center table-danger" >1</td>
+            <td class="text-center table-warning" >2</td>
+            <td class="text-center table-warning" >2</td>
+            <td class="text-center table-warning" >2</td>
+            <td class="text-center table-warning" >2</td>
+            <td class="text-center table-success" >3</td>
+            <td class="text-center table-success" >4</td>
+            <td class="text-center table-success" >4</td>
+          </tr>
+          {%endfor%}
+          <tr>
+            <th class="text-end" colspan="2">Total</th>
+            <th class="text-center">140</th>
+            {%for i in range(0, 9)%}
+              <td class="text-center"> 89</td>
+            {%endfor%}
+          </tr>
+          <tr>
+            <th class="text-end" colspan="2">%</th>
+            <th class="text-center"></th>
+            {%for i in range(0, 9)%}
+              <td class="text-center">68&percnt;</td>
+            {%endfor%}
+          </tr>
+          <tr>
+            <th class="text-end" colspan="2">Grade</th>
+            <th class="text-center"></th>
+            {%for i in range(0, 9)%}
+              <td class="text-center"> B</td>
+            {%endfor%}
+          </tr>
+          <tr>
+            <th class="text-end" colspan="2">Student Can Edit</th>
+            <th class="text-center"></th>
+            {%for i in range(0, 9)%}
+              <td class="text-center">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              </td>
+            {%endfor%}
+          </tr>
+          <tr>
+            <th class="text-end" colspan="2">Edit</th>
+            <th class="text-center"></th>
+            {%for i in range(0, 9)%}
+              <td class="text-center"><div>
+                <img  role="button" data-bs-toggle="modal" data-bs-target="#questionUpdate" src="{{url_for('static', filename='img/edit.svg')}}" class="rounded" alt="edit">
+              </div></td>
+            {%endfor%}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+<!-- ############# MODAL: EDIT AP Test Details ################### -->
+  <div class="modal fade" id="addTest" tabindex="-1" aria-labelledby="addTestLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="addTestLabel">Edit AP Test Details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+          <div class="mb-3">
+<!--             MODAL FORM  -->
+            <label for="recipient-name" class="col-form-label">Test Name:</label>
+            <input type="text" class="form-control" id="q-no">
+          </div>
+            <div class="mb-3">
+            <label for="test-date" class="col-form-label">Test Date:</label>
+            <input type="date" class="form-control" id="test-date" min="2021-01-01" max="2027-12-31">
+          </div>
+<!--         Test Type -->
+          <div class="mb-3">
+            <label for="form-test-type" class="col-form-label">Test Type:</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="test-type" id="test-type-ap" checked>
+              <label class="form-check-label" for="test-type-ap">
+                Assessment Point
+              </label>
+            </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="test-type" id="test-type-practice" disabled>
+                <label class="form-check-label" for="test-type-practice">
+                  Practice Paper
+                </label>
+              </div>
+          </div>    
+
+<!--         Assessor     -->
+          <div class="mb-3">
+            <label for="form-assessor" class="col-form-label">Assessor:</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="assessor" id="selfassessed" disabled>
+              <label class="form-check-label" for="selfassessed">
+                Self
+              </label>
+            </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="assessor" id="teacherassessed" checked>
+                <label class="form-check-label" for="teacherassessed">
+                  Teacher
+                </label>
+              </div>
+          </div> 
+
+<!--         GRADE BOUNDARIES -->
+        <div class="mb-3">
+          <label class="col-form-label">Test Grade Boundaries &#37;:</label>
+            <div class="input-group input-group-lg mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-lg">A*</span>
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value='80'>
+</div>
+            <div class="input-group input-group-lg mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-lg">A</span>
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value='70'>
+</div>
+            <div class="input-group input-group-lg mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-lg">B</span>
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value='60'>
+</div>
+            <div class="input-group input-group-lg mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-lg">C</span>
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value='50'>
+</div>
+            <div class="input-group input-group-lg mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-lg">D</span>
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value='40'>
+</div>
+            <div class="input-group input-group-lg mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-lg">E</span>
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value='30'>
+</div>
+            <div class="input-group input-group-lg mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-lg">F</span>
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value='20'>
+</div>
+                  </div>
+
+            
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn btn-warning text-dark btn-outline-light">Save changes</button>
+        </div>        
+      </div>
+    </div>
+  </div>
+<!-- ################################ -->
+
+<!-- ############# MODAL: Add Student ################### -->
+  
+  <div class="modal fade" id="addStudent" tabindex="-1" aria-labelledby="addStudentLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="addStudentLabel">Add Students</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!--             MODAL FORM  -->
+          <form>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+    Select All
+              </label>
+            </div>
+            <div>
+              <h2>10A/CM1</h2>
+          {% for i in range(25) %}
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+    Tommy Jones
+              </label>
+            </div>
+            {% endfor %}
+            </div>
+            <div>
+              <h2>10B/CM2</h2>
+          {% for i in range(25) %}
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+    Tommy Jones
+              </label>
+            </div>
+            {% endfor %}
+              <div>
+              <h2>10D/CM3</h2>
+          {% for i in range(25) %}
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+    Tommy Jones
+              </label>
+            </div>
+            {% endfor %}
+            </div>
+            </div>
+        </form>  
+        </div>
+        <div class="modal-footer">
+<!--           MODAL BUTTONS -->
+<button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn btn-warning text-dark btn-outline-light">Add to Test</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+<!-- ############################### -->
+      
+<!-- ############# MODAL: add / edit question ################### -->
+  <div class="modal fade" id="questionUpdate" tabindex="-1" aria-labelledby="questionUpdateLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="questionUpdateLabel">Question Details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+          <div class="mb-3">
+<!--             MODAL FORM  -->
+            <label for="recipient-name" class="col-form-label">Q No.:</label>
+            <input type="text" class="form-control" id="q-no">
+          </div>
+          <div class="mb-3">
+            <label for="form-topic" class="col-form-label">Topic:</label>
+            <select id="form-topic" class="form-select" aria-label="Default select example">
+              <option selected>Choose Topic</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="form-mark" class="col-form-label">Mark:</label>
+            <input type="text" class="form-control" id="form-mark">
+          </div>
+          <div class="mb-3">
+            <label for="form-max-marks" class="col-form-label">Max Marks:</label>
+            <input type="text" class="form-control" id="form-max-marks">
+          </div>
+          <div class="mb-3">
+            <label for="form-assessor" class="col-form-label">Assessor:</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="assessor" id="selfassessed">
+              <label class="form-check-label" for="selfassessed">
+                Self
+              </label>
+            </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="assessor" id="teacherassessed" checked>
+                <label class="form-check-label" for="teacherassessed">
+                  Teacher
+                </label>
+              </div>
+          </div>       
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn btn-warning text-dark btn-outline-light">Save changes</button>
+        </div>        
+      </div>
+    </div>
+  </div>
+<!-- ################################ -->
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
