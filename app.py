@@ -1,4 +1,6 @@
+import os
 from flask import Flask, url_for, render_template
+
 
 app = Flask(__name__)
 
@@ -79,5 +81,17 @@ def adminManageStudents():
     return render_template('admin-manage-students.html')
 
   
+# custom error pages
+
+# invalid URL
+@app.errorhandler(404)
+def page_not_found(e):
+  return render_template("404.html"), 404
+
+# internal server error
+@app.errorhandler(500)
+def server_error(e):
+  return render_template("500.html"), 500
+
 if __name__ == "__main__":
   app.run('0.0.0.0', debug=True)
